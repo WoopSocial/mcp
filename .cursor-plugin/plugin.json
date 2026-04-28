@@ -1,0 +1,28 @@
+{
+  "name": "woopsocial",
+  "version": "1.0.0",
+  "description": "Remote MCP server for creating, scheduling, and publishing social media posts across LinkedIn, X, Instagram, Facebook, Pinterest, TikTok, YouTube, and more via WoopSocial.",
+  "author": {
+    "name": "WoopSocial",
+    "email": "contact@woopsocial.com"
+  },
+  "homepage": "https://docs.woopsocial.com/mcp",
+  "repository": "https://github.com/WoopSocial/mcp",
+  "keywords": [
+    "cursor",
+    "mcp",
+    "social-media",
+    "social-media-scheduling",
+    "content-publishing",
+    "linkedin",
+    "twitter",
+    "x",
+    "instagram",
+    "facebook",
+    "pinterest",
+    "tiktok",
+    "youtube",
+    "woopsocial"
+  ],
+  "mcpServers": "mcp.json"
+}
