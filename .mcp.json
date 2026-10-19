@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "woopsocial": {
+      "type": "http",
+      "url": "https://api.woopsocial.com/mcp"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "name": "woopsocial",
+  "displayName": "WoopSocial",
+  "version": "1.0.0",
+  "description": "Publish and schedule posts to Facebook, Instagram, Threads, LinkedIn, Bluesky, X/Twitter, Pinterest, TikTok and YouTube from a conversation, and check how they were delivered, through your WoopSocial account.",
+  "author": {
+    "name": "WoopSocial",
+    "email": "contact@woopsocial.com",
+    "url": "https://woopsocial.com"
+  },
+  "homepage": "https://docs.woopsocial.com/mcp",
+  "repository": "https://github.com/WoopSocial/mcp",
+  "license": "MIT",
+  "keywords": [
+    "social-media",
+    "social-media-scheduling",
+    "content-publishing",
+    "linkedin",
+    "instagram",
+    "facebook",
+    "threads",
+    "bluesky",
+    "x",
+    "tiktok",
+    "youtube",
+    "pinterest"
+  ]
+}
