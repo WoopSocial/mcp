@@ -20,7 +20,7 @@ The WoopSocial connector must be connected. If its tools are missing, ask the us
 
 ## Uploading media from chat
 
-Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to add `r2.cloudflarestorage.com` to Claude's domain allowlist (Settings > Capabilities) and try again.
+Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to add `*.r2.cloudflarestorage.com` to Claude's domain allowlist (Settings > Capabilities) and try again.
 
 ## Action boundaries
 
