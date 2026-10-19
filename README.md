@@ -1,18 +1,18 @@
-# What is this?
+# WoopSocial
 
-WoopSocial's MCP is a **remote** MCP server that allows your AI agent to post or schedule posts to various social media platforms such as Facebook, Instagram, LinkedIn, Pinterest, YouTube, TikTok, X/Twitter and more.
+Publish and schedule posts to Facebook, Instagram, Threads, LinkedIn, Bluesky, X/Twitter, Pinterest, TikTok and YouTube from a conversation with Claude, and check how they were delivered, through your WoopSocial account.
 
-It is a remote MCP server, which has the benefit of not requiring you to install any additional software on your computer apart from the AI agent(s) that you already have.
+This repository is a Claude plugin. It adds the WoopSocial connector and a `publish-posts` skill that teaches Claude the posting workflow: resolve the project and connected accounts, upload media, validate the post, then publish or schedule it and report how it was delivered.
 
-# Claude plugin
+# Getting started in Claude
 
-This repository is also a Claude plugin. It adds the WoopSocial connector and a `publish-posts` skill that teaches Claude the posting workflow: resolve the project and connected accounts, upload media, validate the post, then publish or schedule it and report how it was delivered.
-
-1. Create a WoopSocial account [here](https://woopsocial.com/).
+1. Create a WoopSocial account [here](https://woopsocial.com/) and connect your social accounts.
 2. Add the WoopSocial plugin in Claude, then connect WoopSocial from the plugin's Connectors tab and sign in. No API key is needed.
 3. Ask Claude to post, for example: "Schedule this video to TikTok, YouTube and Instagram for Friday at 18:00."
 
-# Quickstart
+# Other AI agents
+
+The plugin runs on WoopSocial's **remote** MCP server, which any MCP client can use without installing anything apart from the AI agent(s) you already have.
 
 1. Create a WoopSocial account [here](https://woopsocial.com/).
 2. Create an API key [here](https://app.woopsocial.com/api-access).
