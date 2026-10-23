@@ -1,8 +1,8 @@
 {
   "name": "woopsocial",
-  "displayName": "WoopSocial",
-  "version": "1.0.0",
-  "description": "Publish and schedule posts to Facebook, Instagram, Threads, LinkedIn, Bluesky, X/Twitter, Pinterest, TikTok and YouTube from a conversation, and check how they were delivered, through your WoopSocial account.",
+  "displayName": "WoopSocial: Social Media Scheduler",
+  "version": "1.1.0",
+  "description": "Write, schedule and publish posts to Instagram, TikTok, LinkedIn, X, Threads, Bluesky, Facebook, Pinterest and YouTube from a conversation, through your WoopSocial account. Includes skills for carousels, content calendars, bulk scheduling, cross-posting, fixing failed posts, social media audits and performance reports.",
   "author": {
     "name": "WoopSocial",
     "email": "contact@woopsocial.com",
@@ -23,6 +23,15 @@
     "x",
     "tiktok",
     "youtube",
-    "pinterest"
+    "pinterest",
+    "social-media-scheduler",
+    "schedule-posts",
+    "content-calendar",
+    "instagram-carousel",
+    "cross-post",
+    "bulk-schedule",
+    "social-media-audit",
+    "social-media-report",
+    "woopsocial"
   ]
 }
