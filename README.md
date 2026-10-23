@@ -46,27 +46,37 @@ The skills that write posts for you show every post before it goes out, and Clau
 
 # Other AI agents
 
-The plugin uses WoopSocial's **remote** MCP server, so any MCP client can connect to it with nothing extra to install.
+The plugin uses WoopSocial's **remote** MCP server at `https://api.woopsocial.com/mcp`, so any MCP client can connect to it with nothing extra to install. There are two ways to sign in:
 
-1. Create a WoopSocial account [here](https://woopsocial.com/).
-2. Create an API key [here](https://app.woopsocial.com/api-access).
-3. Copy the MCP URL from the dialog shown after the API key is created.
-4. Add the MCP URL to your favorite AI agent.
-    1. Claude Code:
-        ```bash
-        claude mcp add --transport http woopsocial "https://api.woopsocial.com/mcp?api_key=YOUR_API_KEY"
-        ```
+- **OAuth (recommended):** add the server URL, then sign in to WoopSocial in your browser and click **Authorize**. No API key is needed. This works in Claude, Claude Code, Codex, Cursor and Notion.
+- **API key:** for clients that don't support OAuth yet. Create an API key [here](https://app.woopsocial.com/api-access) and copy the MCP URL shown after the key is created. That URL includes your key, so keep it private.
 
-        Note: As an alternative, Claude Code also supports our OAuth-based authentication flow. Details are available in the [Claude Code CLI integration guide](https://docs.woopsocial.com/mcp/integrating-clients#claude-code-cli).
+Before you start, create a WoopSocial account [here](https://woopsocial.com/) and connect at least one social account.
 
-    2. Codex:
-        ```bash
-        codex mcp add woopsocial --url "https://api.woopsocial.com/mcp?api_key=YOUR_API_KEY"
-        ```
+1. Claude Code (OAuth):
+    ```bash
+    claude mcp add --transport http woopsocial "https://api.woopsocial.com/mcp"
+    ```
 
-    3. See our [Integrating MCP clients](https://docs.woopsocial.com/mcp/integrating-clients#integrating-mcp-clients) guide for more clients.
+    Then start `claude`, type `/mcp`, select `woopsocial`, choose **Authenticate** and click **Authorize** in your browser.
 
-5. Ask your AI agent something about WoopSocial in natural language, for example: "List my social accounts connected to WoopSocial" or "Generate and schedule 10 posts for my business on X via WoopSocial". Your AI agent will use the appropriate [tools](https://docs.woopsocial.com/mcp/tools-reference) of our MCP to complete the task.
+2. Codex (OAuth):
+    ```bash
+    codex mcp add woopsocial --url "https://api.woopsocial.com/mcp"
+    ```
+
+    ```bash
+    codex mcp login woopsocial
+    ```
+
+3. Clients without OAuth support: add the MCP URL with your API key, for example:
+    ```text
+    https://api.woopsocial.com/mcp?api_key=YOUR_API_KEY
+    ```
+
+4. See our [Integrating MCP clients](https://docs.woopsocial.com/mcp/integrating-clients#integrating-mcp-clients) guide for step-by-step setup in ChatGPT, Notion, Gemini CLI, Cursor and more.
+
+Then ask your AI agent something about WoopSocial in natural language, for example: "List my social accounts connected to WoopSocial" or "Generate and schedule 10 posts for my business on X via WoopSocial". Your AI agent will use the appropriate [tools](https://docs.woopsocial.com/mcp/tools-reference) of our MCP to complete the task.
 
 # Data
 
