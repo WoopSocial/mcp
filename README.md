@@ -70,7 +70,7 @@ The plugin uses WoopSocial's **remote** MCP server, so any MCP client can connec
 
 # Data
 
-The plugin ships no code of its own and stores nothing. To upload media or render carousel slides, Claude may run commands in your code execution environment or shell. Claude sends the post content, schedule and selected accounts to your WoopSocial account through `api.woopsocial.com`, and uploads media to presigned URLs on `r2.cloudflarestorage.com`. WoopSocial then publishes to the social platforms you connected. Some skills can save files you approve, such as a content calendar CSV, to your working folder.
+The plugin ships no code of its own and stores nothing. To upload media or render carousel slides, Claude may run commands in your code execution environment or shell. Claude sends the post content, schedule and selected accounts to your WoopSocial account through `api.woopsocial.com`, and uploads media to presigned URLs on `r2.cloudflarestorage.com`. WoopSocial then publishes to the social platforms you connected. Some skills can save files you approve, such as a content calendar CSV, to your working folder. See WoopSocial's [privacy policy](https://woopsocial.com/privacy-policy) and [terms of service](https://woopsocial.com/terms-of-service).
 
 # Support
 
