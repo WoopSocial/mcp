@@ -8,11 +8,11 @@
     "email": "contact@woopsocial.com",
     "url": "https://woopsocial.com"
   },
-  "homepage": "https://docs.woopsocial.com/mcp",
+  "homepage": "https://docs.woopsocial.com/mcp/overview",
   "repository": "https://github.com/WoopSocial/mcp",
   "license": "MIT",
   "icon": "./logo.png",
-  "documentationUrl": "https://docs.woopsocial.com/mcp",
+  "documentationUrl": "https://docs.woopsocial.com/mcp/overview",
   "supportUrl": "https://github.com/WoopSocial/mcp/issues",
   "privacyPolicyUrl": "https://woopsocial.com/privacy-policy",
   "termsOfServiceUrl": "https://woopsocial.com/terms-of-service",
