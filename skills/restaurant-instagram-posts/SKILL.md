@@ -7,6 +7,8 @@ description: "Instagram, Facebook and TikTok posts for restaurants, cafes and ba
 
 Write a week of posts for a restaurant, cafe or bar: captions that make people hungry, photo direction, and timing around when guests decide where to eat. The posts are finished work on their own. Then offer to schedule them through WoopSocial. Instagram and Facebook by default, TikTok for short videos.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## 1. Get the facts
 
 Ask only for what's missing:
@@ -60,12 +62,12 @@ Show the week and let the owner edit. List every placeholder like `[price]` or `
 
 Offer: "Want me to schedule this week's posts on Instagram and Facebook?"
 
-**If no WoopSocial tools are available,** say in one line that the WoopSocial connector isn't set up. The owner can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=restaurant-instagram-posts, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. The posts are already written. Never pretend to post.
+**If no WoopSocial tools are available,** say in one line that the WoopSocial connector isn't set up. The owner can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=restaurant-instagram-posts, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. The posts are already written. Never pretend to post.
 
 **If it is available:**
 
 1. **Find the accounts.** Call projects_list (ask by name if there are several, for example one per location), then social_accounts_list. Use only CONNECTED accounts. Offer oauth_create_authorization for anything missing or DISCONNECTED, and confirm with social_accounts_list. Never show IDs.
-2. **Upload the media.** Per file: get its size, call media_uploads_create_session (projectId, fileSizeInBytes), split into `partCount` parts where every part except the last is exactly `partSizeInBytes`, PUT the raw bytes to each `uploadUrl`, then media_uploads_complete_session. Use media_list for files already in WoopSocial. If URLs expire, start a new session. If the PUT is blocked, the user must allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so and suggest uploading in the WoopSocial app.
+2. **Upload the media.** Per file: get its size, call media_uploads_create_session (projectId, fileSizeInBytes), split into `partCount` parts where every part except the last is exactly `partSizeInBytes`, PUT the raw bytes to each `uploadUrl`, then media_uploads_complete_session. Use media_list for files already in WoopSocial. If URLs expire, start a new session. If the PUT is blocked, the user must allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so and suggest uploading in the WoopSocial app.
 3. **Build one payload per post.** One content item with caption and media in order. Instagram: `POST` for photos and carousels, `REEL` for video, `STORY` for hours (Stories show no caption, so the text must be on the image). Facebook: `IMAGE`, `VIDEO`, `REEL` or `TEXT_ONLY`, with `link` for booking or ordering. TikTok: `VIDEO` (or `PHOTO` for a photo carousel); call social_accounts_get_platform_inputs and let the owner choose `privacyLevel`, and set allowComment, isYourBrand, isBrandedContent and autoAddMusic with them, and allowDuet and allowStitch for VIDEO (send both as false for PHOTO). Use `contentOverride` for platform-specific captions. Schedule with SCHEDULE_FOR_LATER and `scheduledFor` in UTC, or DRAFT (undated). Add `retryPolicy: {maxRetries: 2, delaySeconds: 300}` unless declined.
 4. **Validate each post** with posts_validate, fix what it flags, re-validate. It returns `isValid` and a list of `errors` (each with a `path` and a `message`); treat `isValid: false` as a failure even though the call succeeded. If an error names a field you don't recognize, schema_describe shows the tool's full input schema. Ask before changing the owner's text.
 5. **One confirmation for the week:** per post the day and time in the restaurant's zone, accounts, type, caption first line, media, TikTok settings, automatic retry. Full text on request. Ask for a yes, which covers only what was shown.

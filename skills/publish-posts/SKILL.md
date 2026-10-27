@@ -5,7 +5,9 @@ description: Publish or schedule social media posts through WoopSocial to Facebo
 
 # Publish posts with WoopSocial
 
-The WoopSocial connector must be connected. If its tools are missing, ask the user to connect WoopSocial from the plugin's Connectors tab.
+The WoopSocial connector must be connected. If its tools are missing, ask the user to connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`).
+
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
 
 ## Posting workflow
 
@@ -20,7 +22,7 @@ The WoopSocial connector must be connected. If its tools are missing, ask the us
 
 ## Uploading media from chat
 
-Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to add `*.r2.cloudflarestorage.com` to Claude's domain allowlist (Settings > Capabilities) and try again.
+Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains) and try again.
 
 ## Action boundaries
 

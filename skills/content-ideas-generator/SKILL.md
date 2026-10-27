@@ -7,6 +7,8 @@ description: "Generate social media post ideas that fit the user's niche, audien
 
 Give the user up to 20 specific post ideas they could make this week, not a list of generic topics. When WoopSocial is connected, build on what already works for them. Ideas they pick can become drafts or scheduled posts.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## 1. Know the account
 
 Ask only for what's missing, in one message:
@@ -53,7 +55,7 @@ Avoid ideas any account in the niche could post unchanged. If an idea is generic
 Ask which ideas they want to use. Then:
 
 1. Draft each picked idea as a ready post for its platform: the hook, the body, one clear ask, and hashtags where the platform uses them. For carousels, outline the slides. For video, give a short shot list. Show the drafts and let them edit.
-2. **Not connected:** stop here, or offer to connect so they can save the drafts. They can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=content-ideas-generator, then connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in. connect-social-accounts can walk them through it. Never pretend to save or post.
+2. **Not connected:** stop here, or offer to connect so they can save the drafts. They can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=content-ideas-generator, then connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in. connect-social-accounts can walk them through it. Never pretend to save or post.
 3. **Connected:** use CONNECTED accounts only. Offer to connect a missing platform with oauth_create_authorization, and confirm with social_accounts_list after the user says done.
    - Default: save each as a DRAFT (`schedule: {type: DRAFT}`). Drafts have no date; they wait in WoopSocial until the user schedules them.
    - Set the fields each target needs: postType for Instagram and Facebook; for TikTok, privacyLevel and labels chosen by the user; YouTube title and privacy; Pinterest board. A draft for a platform that needs media (Instagram, TikTok, YouTube, Pinterest) may fail validation without a file. If so, say why and keep the draft in chat.

@@ -7,9 +7,11 @@ description: "Find and fix social media posts that failed to publish in WoopSoci
 
 Find what didn't go out, explain why in plain words, fix the cause, and re-send. Be honest about errors you can't read: show them rather than guess.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=fix-failed-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. Without it there are no delivery records to check. Never pretend to re-send anything.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=fix-failed-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. Without it there are no delivery records to check. Never pretend to re-send anything.
 
 ## 1. Find the failures
 
@@ -48,7 +50,7 @@ There is no edit endpoint. Re-sending means creating a new post with the fix app
    - Get the file size, call media_uploads_create_session (projectId, fileSizeInBytes, max 5 GB).
    - Split into `partCount` parts, every part except the last exactly `partSizeInBytes`, and PUT each to its `uploadUrl`.
    - Call media_uploads_complete_session and use the returned media id.
-   If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so and offer two options: the user uploads the file in the WoopSocial app and you find it with media_list, or a text-only post where the platform allows it.
+   If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so and offer two options: the user uploads the file in the WoopSocial app and you find it with media_list, or a text-only post where the platform allows it.
    Upload links expire at `expiresAt`; if they do, start a new session.
 2. Call posts_get on the failed post to copy every setting: platform fields (post type, privacy, board, title, link and so on), `contentOverride`, `retryPolicy` and `autoDeleteMediaAfterPublish`. After a reconnect, take the account from a fresh social_accounts_list.
 3. Ask when: now (PUBLISH_NOW), or a new time (SCHEDULE_FOR_LATER with `scheduledFor` in UTC; if the original time has passed, it can't be reused). Ask the time zone once if unclear.

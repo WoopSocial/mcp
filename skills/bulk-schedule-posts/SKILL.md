@@ -7,9 +7,11 @@ description: "Bulk schedule many posts at once through WoopSocial from a spreads
 
 Turn a content calendar or a pile of media into a full, validated queue in WoopSocial with one approval. The work is in the mapping and the checking: get every row right before anything is created.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=bulk-schedule-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still clean up the sheet and build the queue table now, so offer that. Never pretend to post.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=bulk-schedule-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still clean up the sheet and build the queue table now, so offer that. Never pretend to post.
 
 ## 1. Read the input
 
@@ -67,7 +69,7 @@ Upload every local file, one at a time, and keep a row-to-media-id map. Reuse th
 2. Split the file into `partCount` parts. Every part except the last is exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (a short script works best for many files).
 3. Call media_uploads_complete_session and record the media id. If the URLs expire (`expiresAt`), start a new session.
 
-Uploads need code execution or a shell with network access. If they're blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so plainly. The fallback: the user uploads the files in the WoopSocial app, then you find them with media_list and match them to rows by filename. Text-only rows (X, Threads, Bluesky, LinkedIn, Facebook) can go ahead either way.
+Uploads need code execution or a shell with network access. If they're blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. The fallback: the user uploads the files in the WoopSocial app, then you find them with media_list and match them to rows by filename. Text-only rows (X, Threads, Bluesky, LinkedIn, Facebook) can go ahead either way.
 
 ## 8. Validate every post
 

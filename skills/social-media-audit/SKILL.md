@@ -1,11 +1,13 @@
 ---
 name: social-media-audit
-description: "Audit a social media account: what's working, what isn't, profile and bio, posting rhythm, formats, hooks and engagement, with a ranked fix list. Use when the user says \"audit my Instagram\", \"why isn't my account growing\", \"review my LinkedIn profile and posts\", \"social media audit\". Works from what the user shares or pastes. When WoopSocial is connected, it also reads real results for posts sent through it. Ends with a two-week plan, and with WoopSocial connected, Claude can draft the plan's posts and schedule them after approval."
+description: "Audit a social media account: what's working, what isn't, profile and bio, posting rhythm, formats, hooks and engagement, with a ranked fix list. Use when the user says \"audit my Instagram\", \"why isn't my account growing\", \"review my LinkedIn profile and posts\", \"social media audit\". Works from what the user shares or pastes. When WoopSocial is connected, it also reads real results for posts sent through it. Ends with a two-week plan, and with WoopSocial connected, the assistant can draft the plan's posts and schedule them after approval."
 ---
 
 # Social media audit
 
 Give an honest read of an account: a score per area with the reason, the five fixes that matter most, and a two-week plan. Judge only what you can actually see. This works without WoopSocial; WoopSocial adds real results and lets the plan go straight into the schedule.
+
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
 
 ## 1. Gather the inputs
 
@@ -20,7 +22,7 @@ If a web fetch or browsing tool is available, read the public profile pages. Man
 
 **If WoopSocial is connected** (tools like projects_list are available): call projects_list (ask by name if several), social_accounts_list, then social_account_posts_list with deliveryStatus PUBLISHED, limit 100, following nextCursor. Read the latest analytics snapshot per metric for each post. This covers only posts sent through WoopSocial. Missing metrics mean the platform doesn't report them, 0 is a real value, an empty metric array means nothing has been collected yet, posts under about 48 hours old are still moving, and data refreshes about daily. On a 429, wait briefly and retry. Never show IDs.
 
-**If it isn't connected,** carry on with what the user shared. Mention once, at the end, that connecting WoopSocial adds real per-post results for future posts and lets the plan be scheduled: free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=social-media-audit, then connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in.
+**If it isn't connected,** carry on with what the user shared. Mention once, at the end, that connecting WoopSocial adds real per-post results for future posts and lets the plan be scheduled. They can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=social-media-audit, then connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in.
 
 ## 2. Check each area
 

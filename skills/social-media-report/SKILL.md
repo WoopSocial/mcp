@@ -7,9 +7,11 @@ description: "Social media performance report for posts published through WoopSo
 
 Turn the results of posts sent through WoopSocial into a short, honest report and three things to do next. Compare the user with their own past posts, never with made-up industry numbers.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools (projects_list, social_account_posts_list and so on) are available, the connector isn't set up. Say so in one line. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=social-media-report, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. If they paste numbers from their native insights instead, you can read those, but say they came from the user. Never invent results.
+If no WoopSocial tools (projects_list, social_account_posts_list and so on) are available, the connector isn't set up. Say so in one line. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=social-media-report, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. If they paste numbers from their native insights instead, you can read those, but say they came from the user. Never invent results.
 
 ## 1. Scope the report
 

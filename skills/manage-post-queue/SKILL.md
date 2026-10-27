@@ -7,9 +7,11 @@ description: "See and manage scheduled social posts in WoopSocial: what's going 
 
 Show the user what's scheduled, and move, cancel, pause or resume posts safely. WoopSocial can't edit a scheduled post, so moving, pausing and resuming work by recreating it and deleting the original. Say this in one line before any of those.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=manage-post-queue, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), sign in and retry. There's no queue to show until then. Never pretend to change anything.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=manage-post-queue, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), sign in and retry. There's no queue to show until then. Never pretend to change anything.
 
 ## 1. Load the queue
 

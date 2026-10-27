@@ -5,11 +5,13 @@ description: "Weekly social media autopilot through WoopSocial: each week read h
 
 # Weekly social autopilot
 
-Run the same loop every week: look at last week, plan next week, draft in the user's voice, get approval, schedule. Claude does the planning and writing; the user supplies media and approves. Nothing is scheduled without a person's yes.
+Run the same loop every week: look at last week, plan next week, draft in the user's voice, get approval, schedule. The assistant does the planning and writing; the user supplies media and approves. Nothing is scheduled without a person's yes.
+
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
 
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=weekly-social-autopilot, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), sign in and retry. You can still do onboarding and draft a first week now, so offer that. Never pretend to schedule.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=weekly-social-autopilot, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), sign in and retry. You can still do onboarding and draft a first week now, so offer that. Never pretend to schedule.
 
 ## First run: onboarding
 
@@ -54,7 +56,7 @@ Show the week post by post: day and time, account, post type, full text, media n
 
 For each approved post, one at a time:
 
-1. **Media:** for local files, upload them (media_uploads_create_session with projectId and fileSizeInBytes, PUT each part to its uploadUrl, every part but the last exactly partSizeInBytes, then media_uploads_complete_session). Files already in WoopSocial: find them with media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so: the user can upload in the WoopSocial app (then find it with media_list), and posts that still lack media are saved as drafts (step 3).
+1. **Media:** for local files, upload them (media_uploads_create_session with projectId and fileSizeInBytes, PUT each part to its uploadUrl, every part but the last exactly partSizeInBytes, then media_uploads_complete_session). Files already in WoopSocial: find them with media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so: the user can upload in the WoopSocial app (then find it with media_list), and posts that still lack media are saved as drafts (step 3).
 2. **Build the payload:** one content item, `schedule: {type: SCHEDULE_FOR_LATER, scheduledFor: <UTC>}`, the account targets with their platform fields, and `retryPolicy: {maxRetries: 2, delaySeconds: 300}` unless they don't want retries.
 3. **No media on a platform that needs it** (Instagram, TikTok, YouTube, Pinterest): don't schedule it. Save it as a DRAFT (`schedule: {type: DRAFT}`, no date) and flag it in the summary so the user can add media in the WoopSocial app or send the file next time. If posts_validate rejects even the draft, keep the post in the summary as text to add later, and don't create it.
 4. posts_validate, fix and re-validate, then posts_create. It returns `isValid` and a list of `errors` (each with a `path` and a `message`); treat `isValid: false` as a failure even though the call succeeded. If an error names a field you don't recognize, schema_describe shows the tool's full input schema. If a fix changes the text, media or settings the user approved, show the change and get a yes before posts_create. On a 429, wait briefly and retry.

@@ -1,15 +1,17 @@
 ---
 name: instagram-posts
-description: "Write and schedule Instagram posts, carousels, Reels and Stories through WoopSocial. Use when the user says \"post this to Instagram\", \"write a caption and schedule it\", \"schedule this Reel for Friday\", \"post a Story\", \"post this carousel\", or wants a Trial Reel shown to non-followers first. Writes or tightens the caption and hashtags if needed, uploads the media, sets post type and cover, validates, shows the post for approval when Claude wrote or changed anything, then publishes or schedules. For designing carousel slides from scratch, use instagram-carousel-maker."
+description: "Write and schedule Instagram posts, carousels, Reels and Stories through WoopSocial. Use when the user says \"post this to Instagram\", \"write a caption and schedule it\", \"schedule this Reel for Friday\", \"post a Story\", \"post this carousel\", or wants a Trial Reel shown to non-followers first. Writes or tightens the caption and hashtags if needed, uploads the media, sets post type and cover, validates, shows the post for approval when it wrote or changed anything, then publishes or schedules. For designing carousel slides from scratch, use instagram-carousel-maker."
 ---
 
 # Instagram posts
 
 Take what the user has (a photo, slides, a video, a rough caption) and turn it into a scheduled or published Instagram post through WoopSocial. Writing the caption is part of the job. Designing slides from scratch is not: point to instagram-carousel-maker for that.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=instagram-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the caption now, so offer that. Never pretend to post.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=instagram-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the caption now, so offer that. Never pretend to post.
 
 ## 1. Work out the post
 
@@ -59,7 +61,7 @@ For each local file (slides in the right order for a carousel):
 2. Split the file into `partCount` parts. Every part except the last must be exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (curl or a short script).
 3. Call media_uploads_complete_session and keep the returned media id.
 
-If the user says the files are already in WoopSocial, find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com`. On claude.ai or Claude Desktop that's Settings > Capabilities, under code execution network settings. In Claude Code it's the sandbox's allowed network domains. If Claude can't make HTTP requests here at all, say so plainly. The user can upload the media in the WoopSocial app, and you can still prepare the caption.
+If the user says the files are already in WoopSocial, find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests here at all, say so plainly. The user can upload the media in the WoopSocial app, and you can still prepare the caption.
 
 ## 6. Validate, confirm, schedule
 

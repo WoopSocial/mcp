@@ -7,6 +7,8 @@ description: "Make an Instagram carousel: a cover that stops the scroll, one ide
 
 Turn a topic, a blog post or a rough idea into a finished carousel plan: every slide written, a design spec, the caption, and optional image prompts. If code execution is available, offer to render simple slides as image files too. Then offer to post or schedule them through WoopSocial. The carousel work is complete on its own, with or without WoopSocial.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## 1. Get the brief
 
 Ask only for what's missing:
@@ -64,12 +66,12 @@ Never say slides exist unless they were rendered here or the user provided them.
 
 Once the slide files exist, offer one concrete next step, for example: "Want me to schedule this carousel on Instagram for Tuesday 9am?"
 
-**If no WoopSocial tools are available,** say in one line that the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=instagram-carousel-maker, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. The slides and caption are already done. Never pretend to post.
+**If no WoopSocial tools are available,** say in one line that the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=instagram-carousel-maker, connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), and retry. The slides and caption are already done. Never pretend to post.
 
 **If it is available:**
 
 1. **Find the accounts.** Call projects_list (ask by name if there are several), then social_accounts_list. Use only CONNECTED accounts. If a platform is missing or DISCONNECTED, offer to connect it with oauth_create_authorization and confirm with social_accounts_list after the user says done. Never show IDs.
-2. **Upload the slides in order.** For each file: get its size, call media_uploads_create_session (projectId, fileSizeInBytes), split it into `partCount` parts where every part except the last is exactly `partSizeInBytes`, PUT each part's raw bytes to its `uploadUrl`, then call media_uploads_complete_session and keep the media id. Files already in WoopSocial can be found with media_list. If URLs expire, start a new session. If the PUT is blocked, the user must allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so and suggest uploading in the WoopSocial app.
+2. **Upload the slides in order.** For each file: get its size, call media_uploads_create_session (projectId, fileSizeInBytes), split it into `partCount` parts where every part except the last is exactly `partSizeInBytes`, PUT each part's raw bytes to its `uploadUrl`, then call media_uploads_complete_session and keep the media id. Files already in WoopSocial can be found with media_list. If URLs expire, start a new session. If the PUT is blocked, the user must allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so and suggest uploading in the WoopSocial app.
 3. **Build the payload.** One content item with the caption and all slides as media, in slide order. Per platform:
    - **Instagram:** `postType: POST`. A carousel is one post with several media.
    - **TikTok:** `postType: PHOTO`. Call social_accounts_get_platform_inputs and let the user choose `privacyLevel` from the options returned; never pick it for them. Also set allowComment (false if comments aren't available for the account), isYourBrand, isBrandedContent and autoAddMusic with the user, and send allowDuet and allowStitch as false (required but unused for photos). A TikTok caption can be adapted with `contentOverride`.

@@ -1,31 +1,33 @@
 ---
 name: connect-social-accounts
-description: "Connect Instagram, TikTok, LinkedIn, X, Threads, Bluesky, Facebook, Pinterest and YouTube accounts so Claude can post to them through WoopSocial. Use when the user asks \"can Claude post to my Instagram?\", \"connect my LinkedIn to Claude\", \"link my TikTok\", \"add a new client's accounts\", or a post can't go out because no account is connected. Explains what Claude can and can't post (not Reddit or Mastodon), creates a project per brand or client, gives a secure sign-in link and confirms the account is live."
+description: "Connect Instagram, TikTok, LinkedIn, X, Threads, Bluesky, Facebook, Pinterest and YouTube accounts so the assistant can post to them through WoopSocial. Use when the user asks \"can you post to my Instagram?\", \"connect my LinkedIn\", \"link my TikTok\", \"add a new client's accounts\", or a post can't go out because no account is connected. Explains what the assistant can and can't post (not Reddit or Mastodon), creates a project per brand or client, gives a secure sign-in link and confirms the account is live."
 ---
 
 # Connect social accounts
 
-Get the user from "can Claude post for me?" to a connected, working account in a few minutes. WoopSocial does the posting. Claude never sees or stores social media passwords.
+Get the user from "can you post for me?" to a connected, working account in a few minutes. WoopSocial does the posting. The assistant never sees or stores social media passwords.
+
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
 
 ## Step 0: Is WoopSocial available here?
 
 If no WoopSocial tools (projects_list, social_accounts_list and so on) are available, the connector isn't set up yet. Tell the user:
 
-1. Create a free WoopSocial account: https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=connect-social-accounts
+1. Create a WoopSocial account: https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=connect-social-accounts
 2. Connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in. No API key is needed.
 3. Come back and say "connect my accounts".
 
 Stop there. Don't pretend anything is connected.
 
-## Answering "can Claude post to my socials?"
+## Answering "can you post to my socials?"
 
 Answer in a few lines, then offer to connect:
 
 - **Yes, through WoopSocial:** Instagram (posts, carousels, Reels, Stories, Trial Reels), TikTok (videos and photo carousels), LinkedIn (personal profile and company pages), X, Threads, Bluesky, Facebook Pages (posts, Reels, Stories), Pinterest (pins to boards) and YouTube (videos and Shorts).
-- **Claude can** write the post, schedule it for a set time, publish it now, save it as a draft, post the same thing to several platforms, show what's scheduled, and report results for posts sent through WoopSocial.
+- **The assistant can** write the post, schedule it for a set time, publish it now, save it as a draft, post the same thing to several platforms, show what's scheduled, and report results for posts sent through WoopSocial.
 - **Not supported:** Reddit and Mastodon. Thread chains on X, Threads or Bluesky go out as single posts only. Replying to comments and DMs isn't supported.
-- **Uploading photos and videos** needs Claude to be able to run code or a shell (Claude Code, or claude.ai with code execution turned on). Text posts work everywhere.
-- **Nothing posts** unless the user asks for it. When Claude wrote or changed the post, when it's more than one post, or when the account or time is unclear, Claude shows it first and waits for a yes.
+- **Uploading photos and videos** needs the assistant to be able to run code or a shell (Claude Code, or claude.ai with code execution turned on). Text posts work everywhere.
+- **Nothing posts** unless the user asks for it. When the assistant wrote or changed the post, when it's more than one post, or when the account or time is unclear, the assistant shows it first and waits for a yes.
 
 ## Connect flow
 

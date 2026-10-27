@@ -1,15 +1,17 @@
 ---
 name: linkedin-posts
-description: "Write and schedule LinkedIn posts for a personal profile or a company page through WoopSocial. Use when the user says \"write a LinkedIn post about this\", \"turn this into a LinkedIn post and schedule it\", \"post this to our company page Tuesday 8am\", \"queue my LinkedIn posts for the week\". Writes for LinkedIn (a hook that earns \"see more\", short lines, a real question, no engagement bait), attaches a link, image or video, picks profile or page, validates, shows the post for approval when Claude wrote or changed anything, then publishes or schedules."
+description: "Write and schedule LinkedIn posts for a personal profile or a company page through WoopSocial. Use when the user says \"write a LinkedIn post about this\", \"turn this into a LinkedIn post and schedule it\", \"post this to our company page Tuesday 8am\", \"queue my LinkedIn posts for the week\". Writes for LinkedIn (a hook that earns \"see more\", short lines, a real question, no engagement bait), attaches a link, image or video, picks profile or page, validates, shows the post for approval when it wrote or changed anything, then publishes or schedules."
 ---
 
 # LinkedIn posts
 
 Turn an idea, a draft, an article or a rough note into a LinkedIn post that reads well, then schedule or publish it through WoopSocial. Writing is half the job here, so take it seriously.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=linkedin-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the post now, so offer that. Never pretend to post.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=linkedin-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the post now, so offer that. Never pretend to post.
 
 ## 1. Profile or company page?
 
@@ -73,7 +75,7 @@ For each local image or video:
 2. Split the file into `partCount` parts. Every part except the last must be exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (curl or a short script).
 3. Call media_uploads_complete_session and keep the returned media id.
 
-Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so plainly. Offer to post it as text only (with the `link` field if there is one), or the user uploads the media in the WoopSocial app.
+Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. Offer to post it as text only (with the `link` field if there is one), or the user uploads the media in the WoopSocial app.
 
 ## 7. Validate, confirm, schedule
 

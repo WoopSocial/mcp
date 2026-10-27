@@ -7,9 +7,11 @@ description: "Cross-post one piece of content to Instagram, TikTok, LinkedIn, X,
 
 One piece of content, one WoopSocial post, a native version on every platform. The point is not to paste the same caption everywhere: each platform gets text written for how people read it there.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=cross-post-everywhere and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write every platform version now, so offer that. Never pretend to post.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=cross-post-everywhere and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write every platform version now, so offer that. Never pretend to post.
 
 ## 1. Find the accounts
 
@@ -62,7 +64,7 @@ Upload each local file once and reuse the media id on every platform:
 2. Split into `partCount` parts. Every part except the last is exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl`.
 3. Call media_uploads_complete_session and keep the media id.
 
-Files already in WoopSocial: media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so. Offer to cross-post text only to X, Threads, Bluesky, LinkedIn and Facebook, or the user uploads the media in the WoopSocial app.
+Files already in WoopSocial: media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so. Offer to cross-post text only to X, Threads, Bluesky, LinkedIn and Facebook, or the user uploads the media in the WoopSocial app.
 
 ## 5. Build one post with overrides
 

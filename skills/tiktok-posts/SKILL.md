@@ -1,15 +1,17 @@
 ---
 name: tiktok-posts
-description: "Write captions for and schedule TikTok videos and photo carousels through WoopSocial. Use when the user has the video or images ready and says \"post this to TikTok\", \"schedule my TikTok for 7pm\", \"upload this slideshow to TikTok\", \"write a TikTok caption and post it\", or asks how to set privacy, duets, stitches, branded-content or AI-generated labels. Writes the caption and hashtags, uploads, applies the TikTok settings, validates, shows the post for approval when Claude wrote or changed anything, then publishes or schedules."
+description: "Write captions for and schedule TikTok videos and photo carousels through WoopSocial. Use when the user has the video or images ready and says \"post this to TikTok\", \"schedule my TikTok for 7pm\", \"upload this slideshow to TikTok\", \"write a TikTok caption and post it\", or asks how to set privacy, duets, stitches, branded-content or AI-generated labels. Writes the caption and hashtags, uploads, applies the TikTok settings, validates, shows the post for approval when it wrote or changed anything, then publishes or schedules."
 ---
 
 # TikTok posts
 
 Take a finished video or a set of images and get it onto TikTok through WoopSocial, with a caption that works and the right TikTok settings. TikTok has more required settings than other platforms, and some must come from the user, so don't skip them.
 
+The user's explicit instructions take priority over these guidelines, except that you never post, delete or change posts beyond what the user asked for.
+
 ## If WoopSocial isn't connected
 
-If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create a free account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=tiktok-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the caption now, so offer that. Never pretend to post.
+If no WoopSocial tools are available, say the WoopSocial connector isn't set up. The user can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=tiktok-posts and connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`), then retry. You can still write the caption now, so offer that. Never pretend to post.
 
 ## 1. Find the account and its options
 
@@ -72,7 +74,7 @@ For each file (images in swipe order for a photo post):
 2. Split the file into `partCount` parts. Every part except the last must be exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (curl or a short script).
 3. Call media_uploads_complete_session and keep the returned media id.
 
-Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If Claude can't make HTTP requests at all, say so plainly. TikTok always needs media, so the user would upload it in the WoopSocial app. You can still prepare the caption and settings.
+Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. TikTok always needs media, so the user would upload it in the WoopSocial app. You can still prepare the caption and settings.
 
 ## 7. Validate, confirm, schedule
 
