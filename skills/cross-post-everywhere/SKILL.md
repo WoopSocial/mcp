@@ -25,7 +25,7 @@ Get the content (text, link, image, video) and check each platform against it:
 
 | Platform | Needs | Target fields |
 |---|---|---|
-| Instagram | An image or video | `postType` POST (image, carousel) or REEL (vertical video) |
+| Instagram | An image or video | `postType` POST (image, carousel) or REEL (vertical video); `isAiGeneratedContent` true if the content is AI-generated |
 | TikTok | A video, or images for a photo post | Settings from social_accounts_get_platform_inputs (below) |
 | YouTube | A video and a title | `title`, `privacy` (public, private, unlisted), optional `tags`, `madeForKids` |
 | Pinterest | An image or video, a board, ideally a link | `pinterestBoardId`, `title`, `link` |

@@ -41,13 +41,14 @@ Skip this if the user gave final text and said to post it as is.
 
 Show the caption so the user can edit it now. The summary in step 6 covers the final yes.
 
-## 3. Reel and Trial Reel settings
+## 3. Reel, Trial Reel and AI settings
 
 - **Cover:** if the user has a cover image, upload it and set it as `cover`. Otherwise Instagram picks a frame. Mention that a cover with clear text helps the profile grid.
 - **Trial Reel:** if the user wants to test a Reel with non-followers first, set `trialParams.graduationStrategy`:
   - `MANUAL`: the user decides in Instagram whether to share it with followers.
   - `SS_PERFORMANCE`: Instagram shares it with followers automatically if it performs well.
   Explain the choice in one line each and let them pick. Some accounts can't use Trial Reels. If validation rejects it, say so and offer a normal Reel.
+- **AI-generated content** (any post type): set `isAiGeneratedContent: true` when the image or video was made or heavily changed with AI, including an AI voiceover. Instagram then shows its "AI info" label. It can only be set when the post is created, not added later. If unsure, ask.
 
 ## 4. Find the account
 
@@ -65,12 +66,12 @@ If the user says the files are already in WoopSocial, find them with media_list.
 
 ## 6. Validate, confirm, schedule
 
-1. Build the payload: one content item with the caption and media (in order), `schedule` (DRAFT, PUBLISH_NOW, or SCHEDULE_FOR_LATER with `scheduledFor` in UTC), and the Instagram target with `postType`, plus `cover` and `trialParams` when used. Add `retryPolicy: {maxRetries: 2, delaySeconds: 300}` unless the user doesn't want retries.
+1. Build the payload: one content item with the caption and media (in order), `schedule` (DRAFT, PUBLISH_NOW, or SCHEDULE_FOR_LATER with `scheduledFor` in UTC), and the Instagram target with `postType`, plus `cover`, `trialParams` and `isAiGeneratedContent` when used. Add `retryPolicy: {maxRetries: 2, delaySeconds: 300}` unless the user doesn't want retries.
 2. Call posts_validate with that payload. It returns `isValid` and a list of `errors` (each with a `path` and a `message`); treat `isValid: false` as a failure even though the call succeeded. If an error names a field you don't recognize, schema_describe shows the tool's full input schema. Fix what it flags (caption length, unsupported file, aspect ratio) and validate again. Ask before changing anything the user wrote.
 3. **Ask first, or go?** If the user gave the final text and media, the account and the time, and you changed none of it, their request is the go-ahead: skip to step 4 without asking again. Show the summary below and wait for a yes when you wrote or changed any of the text, media or settings, when it's more than one post, or when the account, time or publish-versus-draft is unclear:
    - Account (username), post type, time in the user's time zone
    - Full caption
-   - Media list in order, cover, Trial Reel setting
+   - Media list in order, cover, Trial Reel setting, AI label
 4. Call posts_create with the same payload.
 
 If the time zone isn't clear, ask once. A time in the past isn't allowed, so ask for a new one.
