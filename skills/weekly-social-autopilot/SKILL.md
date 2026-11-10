@@ -34,11 +34,11 @@ Get TikTok privacy options and Pinterest boards with social_accounts_get_platfor
 
 ### 1. Review last week (brief)
 
-Call social_account_posts_list with projectIds and deliveryStatus PUBLISHED, limit 100, following nextCursor. Keep posts whose deliveryCompletedAt is in the last 7 days. For each, read the latest analytics snapshot per metric. Name the top one or two posts for the goal (saves and shares for reach, clicks for traffic, comments for community; per view where views exist) and one that trailed. Three to five lines, no more.
+Call social_account_posts_list_analytics with projectId and startDate and endDate covering the last 7 days in UTC, limit 100, following nextCursor. Each post's `metrics` holds its lifetime totals. Name the top one or two posts for the goal (saves and shares for reach, clicks for traffic, comments for community; per view where views exist) and one that trailed. Three to five lines, no more.
 
-Honesty: only posts sent through WoopSocial count. Missing metrics mean the platform doesn't report them, 0 is real, posts under about 48 hours old are still moving, and data refreshes about daily. If there's no data yet, say so and plan from the notes alone. For a full breakdown, social-media-report is an option.
+Honesty: only posts sent through WoopSocial count. Missing metrics mean the platform doesn't report them or nothing has been collected yet, 0 is real, posts under about 48 hours old are still moving, and data refreshes about daily. If there's no data yet, say so and plan from the notes alone. For a full breakdown, social-media-report is an option.
 
-Also list NOT_STARTED posts: SCHEDULE_FOR_LATER ones fill slots already, so don't double-book them. DRAFT ones may come from an unattended run; start the plan from them instead of drafting again.
+Also list NOT_STARTED posts with social_account_posts_list: SCHEDULE_FOR_LATER ones fill slots already, so don't double-book them. DRAFT ones may come from an unattended run; start the plan from them instead of drafting again.
 
 ### 2. Plan next week
 

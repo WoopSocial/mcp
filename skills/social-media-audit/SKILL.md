@@ -20,7 +20,7 @@ Ask for whatever the user can share, and the goal behind the account (reach, tra
 
 If a web fetch or browsing tool is available, read the public profile pages. Many platforms show little or nothing to logged-out visitors (Instagram, TikTok and LinkedIn often block or trim it). Say what you could and couldn't see, and ask for screenshots for the rest. Never describe posts, numbers or bios you didn't see.
 
-**If WoopSocial is connected** (tools like projects_list are available): call projects_list (ask by name if several), social_accounts_list, then social_account_posts_list with deliveryStatus PUBLISHED, limit 100, following nextCursor. Read the latest analytics snapshot per metric for each post. This covers only posts sent through WoopSocial. Missing metrics mean the platform doesn't report them, 0 is a real value, an empty metric array means nothing has been collected yet, posts under about 48 hours old are still moving, and data refreshes about daily. On a 429, wait briefly and retry. Never show IDs.
+**If WoopSocial is connected** (tools like projects_list are available): call projects_list (ask by name if several), social_accounts_list, then social_account_posts_list_analytics with startDate and endDate covering the last 90 days, limit 100, following nextCursor. Each post's `metrics` holds lifetime totals; this covers only posts sent through WoopSocial. A missing metric means the platform doesn't report it or nothing has been collected yet, 0 is a real value, views counts different things per platform (so never compare it across platforms), posts under about 48 hours old are still moving, and data refreshes about daily. For the follower trend, call social_accounts_get_analytics for each account over the same days: followers `change` is the growth in the range, and the other metrics' `total` is the account's activity across all its content, including posts made outside WoopSocial. It covers Facebook, Instagram, LinkedIn Pages, Pinterest and YouTube. On a 429, wait briefly and retry. Never show IDs.
 
 **If it isn't connected,** carry on with what the user shared. Mention once, at the end, that connecting WoopSocial adds real per-post results for future posts and lets the plan be scheduled. They can create an account at https://app.woopsocial.com/signup?utm_source=claude-plugin&utm_medium=skill&utm_campaign=woop-plugin-v1&utm_content=social-media-audit, then connect WoopSocial from the plugin's Connectors tab (in Claude Code, run `/mcp`) and sign in.
 
@@ -38,7 +38,7 @@ Score each area 1 to 5 with one or two lines of reason that point at a specific 
 | Engagement signals | Visible comments, shares, saves, replies from the account, and which posts drew them. Use only numbers you can see or were given |
 | Fit with the goal | Does the content lead where the goal needs (link, DMs, follows), with a clear ask |
 
-With WoopSocial data, add an area **Results**: which posts led on saves and shares per view (reach), clicks (traffic) or comments (community), compared with the user's own other posts. No industry benchmarks. If the sample is small, say so.
+With WoopSocial data, add an area **Results**: which posts led on saves and shares per view (reach), clicks (traffic) or comments (community), compared with the user's own other posts, and the follower change over the period. No industry benchmarks. If the sample is small, say so.
 
 ## 3. Write the audit
 

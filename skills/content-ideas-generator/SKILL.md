@@ -26,11 +26,11 @@ If they shared past posts or a website, use the specifics in them: product names
 If WoopSocial tools are available:
 
 1. projects_list (ask by name if several), then social_accounts_list. Never show IDs.
-2. social_account_posts_list with projectIds and deliveryStatus PUBLISHED, limit 100, following nextCursor.
-3. For each post, take the latest analytics snapshot per metric. Rank by (saves + shares) divided by views where views exist. Where there are no views, use saves and shares, or comments or clicks if those fit the goal better.
+2. social_account_posts_list_analytics with projectId and startDate and endDate covering the last 90 days, limit 100, following nextCursor.
+3. Each post's `metrics` holds its lifetime totals. Rank by (saves + shares) divided by views where views exist. Where there are no views, use saves and shares, or comments or clicks if those fit the goal better.
 4. Take the top few and work out why they worked: topic, format, hook, angle.
 
-Only posts sent through WoopSocial are included, and metrics refresh about once a day. A missing metric means the platform doesn't report it; a 0 is a real zero. Leave out posts younger than about 48 hours, which are still collecting numbers. If there are no published posts yet, say so and generate from the niche alone.
+Only posts sent through WoopSocial are included, and metrics refresh about once a day. A missing metric means the platform doesn't report it or nothing has been collected yet; a 0 is a real zero. Leave out posts younger than about 48 hours, which are still collecting numbers. If there are no published posts yet, say so and generate from the niche alone.
 
 If WoopSocial isn't connected, skip this step and generate from what the user told you.
 
