@@ -69,12 +69,19 @@ Before you start, create a WoopSocial account [here](https://woopsocial.com/) an
     codex mcp login woopsocial
     ```
 
-3. Clients without OAuth support: add the MCP URL with your API key, for example:
+3. Gemini CLI (OAuth), installs the connector and the skills:
+    ```bash
+    gemini extensions install https://github.com/WoopSocial/mcp
+    ```
+
+    Then start `gemini` and run `/mcp auth woopsocial` to sign in.
+
+4. Clients without OAuth support: add the MCP URL with your API key, for example:
     ```text
     https://api.woopsocial.com/mcp?api_key=YOUR_API_KEY
     ```
 
-4. See our [Integrating MCP clients](https://docs.woopsocial.com/mcp/integrating-clients#integrating-mcp-clients) guide for step-by-step setup in ChatGPT, Notion, Gemini CLI, Cursor and more.
+5. See our [Integrating MCP clients](https://docs.woopsocial.com/mcp/integrating-clients#integrating-mcp-clients) guide for step-by-step setup in ChatGPT, Notion, Gemini CLI, Cursor and more.
 
 Then ask your AI agent something about WoopSocial in natural language, for example: "List my social accounts connected to WoopSocial" or "Generate and schedule 10 posts for my business on X via WoopSocial". Your AI agent will use the appropriate [tools](https://docs.woopsocial.com/mcp/tools-reference) of our MCP to complete the task.
 

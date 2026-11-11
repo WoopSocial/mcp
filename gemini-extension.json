@@ -1,0 +1,10 @@
+{
+  "name": "woopsocial",
+  "version": "1.1.1",
+  "description": "Write, schedule and publish posts to Instagram, TikTok, LinkedIn, X, Threads, Bluesky, Facebook, Pinterest and YouTube from a conversation, through your WoopSocial account. Includes skills for carousels, content calendars, bulk scheduling, cross-posting, fixing failed posts, social media audits and performance reports.",
+  "mcpServers": {
+    "woopsocial": {
+      "httpUrl": "https://api.woopsocial.com/mcp"
+    }
+  }
+}
