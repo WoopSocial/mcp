@@ -75,7 +75,7 @@ For each local image or video:
 2. Split the file into `partCount` parts. Every part except the last must be exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (curl or a short script).
 3. Call media_uploads_complete_session and keep the returned media id.
 
-Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. Offer to post it as text only (with the `link` field if there is one), or the user uploads the media in the WoopSocial app.
+Files already in WoopSocial: find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities > Create and edit files, turn on "Use the internet while making files" and add it under Allowed websites > Manage; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. Offer to post it as text only (with the `link` field if there is one), or the user uploads the media in the WoopSocial app.
 
 ## 7. Validate, confirm, schedule
 

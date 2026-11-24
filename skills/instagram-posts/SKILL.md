@@ -62,7 +62,7 @@ For each local file (slides in the right order for a carousel):
 2. Split the file into `partCount` parts. Every part except the last must be exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (curl or a short script).
 3. Call media_uploads_complete_session and keep the returned media id.
 
-If the user says the files are already in WoopSocial, find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests here at all, say so plainly. The user can upload the media in the WoopSocial app, and you can still prepare the caption.
+If the user says the files are already in WoopSocial, find them with media_list. If uploads are blocked by the network, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities > Create and edit files, turn on "Use the internet while making files" and add it under Allowed websites > Manage; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests here at all, say so plainly. The user can upload the media in the WoopSocial app, and you can still prepare the caption.
 
 ## 6. Validate, confirm, schedule
 

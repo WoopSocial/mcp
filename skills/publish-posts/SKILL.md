@@ -22,7 +22,7 @@ The user's explicit instructions take priority over these guidelines, except tha
 
 ## Uploading media from chat
 
-Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains) and try again.
+Uploads go to presigned URLs on `r2.cloudflarestorage.com`. If uploading a part is blocked, tell the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities > Create and edit files, turn on "Use the internet while making files" and add it under Allowed websites > Manage; Claude Code: the sandbox's allowed network domains) and try again.
 
 ## Action boundaries
 

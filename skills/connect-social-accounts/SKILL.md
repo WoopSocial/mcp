@@ -26,7 +26,7 @@ Answer in a few lines, then offer to connect:
 - **Yes, through WoopSocial:** Instagram (posts, carousels, Reels, Stories, Trial Reels), TikTok (videos and photo carousels), LinkedIn (personal profile and company pages), X, Threads, Bluesky, Facebook Pages (posts, Reels, Stories), Pinterest (pins to boards) and YouTube (videos and Shorts).
 - **The assistant can** write the post, schedule it for a set time, publish it now, save it as a draft, post the same thing to several platforms, show what's scheduled, and report results for posts sent through WoopSocial.
 - **Not supported:** Reddit and Mastodon. Thread chains on X, Threads or Bluesky go out as single posts only. Replying to comments and DMs isn't supported.
-- **Uploading photos and videos** needs the assistant to be able to run code or a shell (Claude Code, or claude.ai with code execution turned on). Text posts work everywhere.
+- **Uploading photos and videos** needs the assistant to be able to run code or a shell (Claude Code, or claude.ai with "Create and edit files" turned on). Text posts work everywhere.
 - **Nothing posts** unless the user asks for it. When the assistant wrote or changed the post, when it's more than one post, or when the account or time is unclear, the assistant shows it first and waits for a yes.
 
 ## Connect flow

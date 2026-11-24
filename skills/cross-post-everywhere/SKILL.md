@@ -64,7 +64,7 @@ Upload each local file once and reuse the media id on every platform:
 2. Split into `partCount` parts. Every part except the last is exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl`.
 3. Call media_uploads_complete_session and keep the media id.
 
-Files already in WoopSocial: media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so. Offer to cross-post text only to X, Threads, Bluesky, LinkedIn and Facebook, or the user uploads the media in the WoopSocial app.
+Files already in WoopSocial: media_list. If uploads are blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities > Create and edit files, turn on "Use the internet while making files" and add it under Allowed websites > Manage; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so. Offer to cross-post text only to X, Threads, Bluesky, LinkedIn and Facebook, or the user uploads the media in the WoopSocial app.
 
 ## 5. Build one post with overrides
 

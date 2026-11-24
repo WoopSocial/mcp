@@ -69,7 +69,7 @@ Upload every local file, one at a time, and keep a row-to-media-id map. Reuse th
 2. Split the file into `partCount` parts. Every part except the last is exactly `partSizeInBytes`. PUT each part's raw bytes to its `uploadUrl` (a short script works best for many files).
 3. Call media_uploads_complete_session and record the media id. If the URLs expire (`expiresAt`), start a new session.
 
-Uploads need code execution or a shell with network access. If they're blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities, code execution network settings; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. The fallback: the user uploads the files in the WoopSocial app, then you find them with media_list and match them to rows by filename. Text-only rows (X, Threads, Bluesky, LinkedIn, Facebook) can go ahead either way.
+Uploads need code execution or a shell with network access. If they're blocked, ask the user to allow `*.r2.cloudflarestorage.com` (claude.ai or Claude Desktop: Settings > Capabilities > Create and edit files, turn on "Use the internet while making files" and add it under Allowed websites > Manage; Claude Code: the sandbox's allowed network domains). If you can't make HTTP requests at all, say so plainly. The fallback: the user uploads the files in the WoopSocial app, then you find them with media_list and match them to rows by filename. Text-only rows (X, Threads, Bluesky, LinkedIn, Facebook) can go ahead either way.
 
 ## 8. Validate every post
 
